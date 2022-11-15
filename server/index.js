@@ -6,7 +6,7 @@ const app = express();
 const port = 4000;
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 mongoose.connect('mongodb://localhost/redditclone');
 const db = mongoose.connection;
@@ -17,3 +17,9 @@ app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 const UserRoutes = require('./routes/UserRoutes');
 app.use('/', UserRoutes);
+const ForumRoutes = require('./routes/ForumRoutes');
+app.use('/', ForumRoutes);
+const PostRoutes = require('./routes/PostRoutes');
+app.use('/', PostRoutes);
+const CommentRoutes = require('./routes/CommentRoutes');
+app.use('/', CommentRoutes);
