@@ -8,7 +8,7 @@ const port = 4000;
 app.use(express.json());
 app.use(cors())
 
-mongoose.connect('mongodb://localhost/redditclone'); //TODO: update this to connect to database
+mongoose.connect('mongodb://localhost/redditclone');
 const db = mongoose.connection;
 db.on('error', (error)=> console.error(error));
 db.once('open', () => console.log('Connected to database'));
