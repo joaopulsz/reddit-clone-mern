@@ -10,7 +10,7 @@ const forumSchema = new Schema({
         type: String,
         required: true
     },
-    subscribers: [{
+    members: [{
         type: Schema.ObjectId, ref: "User"
     }],
     posts: [{
