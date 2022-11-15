@@ -5,7 +5,9 @@ const createNewPost = async (req, res) => {
         forum: req.body.forum,
         user: req.body.user,
         title: req.body.title,
-        body: req.body.body
+        body: req.body.body,
+        likes: 0,
+        comments: []
     });
     try {
         const newPost = await post.save();
@@ -22,18 +24,6 @@ const getCommentsByPost = async (req, res) => {
     try {
         const comments = await Posts.findById(postId).populate('comments');
         res.json(comments);
-    } catch (err) {
-        res.status(404).json({
-            message: 'Post not found'
-        })
-    }
-}
-
-const getLikesByPost = async (req, res) => {
-    const postId = req.params.id;
-    try {
-        const likes = await Posts.findById(postId).populate('likes');
-        res.json(likes);
     } catch (err) {
         res.status(404).json({
             message: 'Post not found'
