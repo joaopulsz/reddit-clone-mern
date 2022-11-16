@@ -7,8 +7,8 @@ router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.get('/users', UserController.getAllUsers);
 router.get('/users/:id', UserController.getUserById);
-router.get('/users/:id/posts, UserController.getPostsByUser');
-router.get('/users/:id/comments, UserController.getCommentsByUser');
+router.get('/users/:id/posts', UserController.getPostsByUser);
+router.get('/users/:id/comments', UserController.getCommentsByUser);
 router.delete('/users/:id', UserController.deleteUserById);
 
 module.exports = router;
