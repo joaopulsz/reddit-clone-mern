@@ -7,6 +7,14 @@ const createNewComment = async (req, res) => {
         body: req.body.body,
         likes: 0
     })
+    try {
+        const newComment = await comment.save();
+        res.json(newComment);
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
 }
 
-module.exports = createNewComment
+module.exports = {createNewComment}

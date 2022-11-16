@@ -44,4 +44,4 @@ const deletePostById = async (req, res) => {
     }
 }
 
-module.exports = {createNewPost, getCommentsByPost, getLikesByPost, deletePostById}
+module.exports = {createNewPost, getCommentsByPost, deletePostById}
