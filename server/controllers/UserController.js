@@ -1,6 +1,58 @@
 const User = require('../models/User');
+const bcrypt = require("bcryptjs");
 
-// TODO: register & login
+const register = (req, res) => {
+    bcrypt.hash(req.body.password, 10, (err, hashedPass) => {
+        if (err) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+        let user = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPass
+        })
+        user.save()
+            .then(user => {
+                res.status(201).json(user)
+            })
+            .catch(error => {
+                res.json({
+                    message: 'An error occured.'
+                })
+            })
+    })
+}
+
+const login = (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    User.findOne({ $or: [{ email: username }, { username: username }] })
+        .then(user => {
+            if (user) {
+                bcrypt.compare(password, user.password, (err, result) => {
+                    if (err) {
+                        res.status(500).json({
+                            message: err.message
+                        })
+                    }
+                    if (result) {
+                        res.status(200).json(user)
+                    } else {
+                        res.status(401).json({
+                            message: "Password does not match."
+                        })
+                    }
+                })
+            } else {
+                res.status(404).json({
+                    message: 'No user found.'
+                })
+            }
+        })
+}
 
 const getAllUsers = async (req, res) => {
     try {
@@ -62,4 +114,4 @@ const deleteUserById = async (req, res) => {
     }
 }
 
-module.exports = {getAllUsers, getUserById, getPostsByUser, getCommentsByUser, deleteUserById}
+module.exports = {register, login, getAllUsers, getUserById, getPostsByUser, getCommentsByUser, deleteUserById}
