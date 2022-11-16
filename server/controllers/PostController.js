@@ -22,7 +22,7 @@ const createNewPost = async (req, res) => {
 const getCommentsByPost = async (req, res) => {
     const postId = req.params.id;
     try {
-        const comments = await Posts.findById(postId).populate('comments');
+        const comments = await Post.findById(postId).populate('comments');
         res.json(comments);
     } catch (err) {
         res.status(404).json({
@@ -34,7 +34,7 @@ const getCommentsByPost = async (req, res) => {
 const deletePostById = async (req, res) => {
     const postId = req.params.id;
     try {
-        const post = await Posts.findById(postId);
+        const post = await Post.findById(postId);
         post.remove();
         res.status(410).json();
     } catch (err) {
