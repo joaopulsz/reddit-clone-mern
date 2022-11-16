@@ -3,7 +3,7 @@ const Forum = require('../models/Forum');
 const getAllForums = async (req, res) => {
     try {
         const forums = await Forum.find();
-        res.json(chats);
+        res.json(forums);
     } catch (err) {
         res.status(500).json({
             message: err.message
@@ -18,6 +18,14 @@ const createNewForum = async (req, res) => {
         members: [],
         posts: []
     })
+    try {
+        const newForum = await forum.save();
+        res.json(newForum);
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
 }
 
 const getForumById = async (req, res) => {
