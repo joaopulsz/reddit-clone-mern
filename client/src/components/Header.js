@@ -6,12 +6,12 @@ const Header = () => {
             <nav id="navbar">
                 <h1>Fakeddit</h1>
                 <form>
-                    <input type="text">Search Fakeddit</input>
+                    <input type="text" placeholder="Search Fakeddit"></input>
                     <button type="submit">Search</button>
                 </form>
                 {/* add routes to the links below */}
-                <a>Sign Up</a>
-                <a>Log in</a>
+                <a href="#">Sign Up</a>
+                <a href="#">Log in</a>
             </nav>
         </header>
     )

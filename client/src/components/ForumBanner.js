@@ -1,9 +1,9 @@
-const ForumBanner = () => {
+const ForumBanner = ({forum}) => {
 
     return (
         <div className="forum-banner">
-            <h2>Name of the forum</h2>
-            <p>Description</p>
+            <h2>{forum.title}</h2>
+            <p>{forum.description}</p>
         </div>
     )
 }
