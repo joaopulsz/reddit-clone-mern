@@ -20,4 +20,14 @@ const forumSchema = new Schema({
 
 const Forum = mongoose.model('Forum', forumSchema);
 
+/*
+    Dummy data:
+    Forum.insertMany([
+        {title: 'Football', description: "A place for all football fans.", members: [], posts: []},
+        {title: 'Gaming', description: "Gamers of the world, unite!", members: [], posts: []},
+        {title: 'Programming', description: "All things code.", members: [], posts: []},
+        {title: 'Music', description: "Let's talk about music.", members: [], posts: []},
+    ])
+*/
+
 module.exports = Forum;
