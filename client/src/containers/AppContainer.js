@@ -14,7 +14,6 @@ const AppContainer = () => {
     }
 
     useEffect(() => {
-        console.log('hi')
         fetchForums();
     }, [])
 

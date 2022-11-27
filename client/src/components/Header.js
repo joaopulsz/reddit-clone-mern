@@ -5,13 +5,17 @@ const Header = () => {
         <header>
             <nav id="navbar">
                 <h1>Fakeddit</h1>
+                
                 <form>
                     <input type="text" placeholder="Search Fakeddit"></input>
                     <button type="submit">Search</button>
                 </form>
+                
                 {/* add routes to the links below */}
-                <a href="#">Sign Up</a>
-                <a href="#">Log in</a>
+                <div className="nav-links">
+                    <a href="#">Sign Up</a>
+                    <a href="#">Log in</a>
+                </div>
             </nav>
         </header>
     )

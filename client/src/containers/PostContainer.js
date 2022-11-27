@@ -1,4 +1,4 @@
-// displays a single post and all of it's comments
+// displays a single post and all of its comments
 
 const PostContainer = () => {
 
