@@ -1,5 +1,5 @@
 body {
-    background-color: #bbb;
+    background-color: rgb(200, 210, 230);
 }
 
 /* Header */
@@ -50,4 +50,15 @@ h1 {
 .nav-links a:hover {
     color: white;
     background-color: rgb(0, 110, 255);
+}
+
+/* Forum Banners */
+.forum-banner {
+    background-color: white;
+    padding: 20px;
+    margin: 30px 80px;
+}
+
+.forum-banner:hover {
+    border: 1px solid black;
 }
