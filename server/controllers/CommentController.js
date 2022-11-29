@@ -17,4 +17,17 @@ const createNewComment = async (req, res) => {
     }
 }
 
-module.exports = {createNewComment}
+const deleteCommentById = async (req, res) => {
+    const commentId = req.params.id;
+    try {
+        const comment = await Comment.findById(commentId);
+        comment.remove();
+        res.status(410).json();
+    } catch (err) {
+        res.status(404).json({
+            message: 'Comment not found'
+        })
+    }
+}
+
+module.exports = {createNewComment, deleteCommentById}
