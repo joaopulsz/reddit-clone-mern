@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import PostBanner from '../components/PostBanner'
+import PostBanner from '../components/PostBanner';
+import PostContainer from "./PostContainer";
+import { Routes, Route } from 'react-router-dom';
 
 const ForumContainer = ({forum}) => {
 
@@ -19,10 +21,22 @@ const ForumContainer = ({forum}) => {
 
     return (
         <div className="forum">
+            
             <h2>{forum.title}</h2>
+
             {posts.map((post, index) => {
-                return <PostBanner key={index} post={post}/>
+                return (
+                    <>
+                        <PostBanner key={index} post={post} forum={forum} />
+
+                        {/* TODO: Fix routing to individual post pages */}
+                        <Routes>
+                            <Route key={post._id} path={`/${forum.title}/${post._id}`} element={<PostContainer post={post}/>}/>
+                        </Routes>
+                    </>
+                )
             })}
+                
         </div>
     )
 }

@@ -29,7 +29,7 @@ function App() {
                     <Route path="/" element={<AppContainer forums={forums} />} />
 
                     {forums.map((forum, index) => {
-                        return <Route key={index} path={`/${forum.title}`} element={<ForumContainer forum={forum} />} />
+                        return <Route key={index} path={`/${forum.title}/*`} element={<ForumContainer forum={forum} />} />
                     })}
                 </Routes>
 

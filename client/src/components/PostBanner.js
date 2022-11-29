@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
-const PostBanner = ({post}) => {
+const PostBanner = ({post, forum}) => {
 
     const [user, setUser] = useState({});
 
@@ -14,13 +15,17 @@ const PostBanner = ({post}) => {
         getUser();
     }, [])
 
+    const route = `/${forum.title}/${post._id}`;
+
     return (
-        <div className="post-banner">
-            <h3 className="post-title">{post.title}</h3>
-            <p className="post-author">{user.username}</p>
-            <p className="like-count">{post.likes} likes</p>
-            {/* add like/dislike buttons */}
-        </div>
+        <Link to={route}>
+            <div className="post-banner">
+                <h3 className="post-title">{post.title}</h3>
+                <p className="post-author">{user.username}</p>
+                <p className="like-count">{post.likes} likes</p>
+                {/* add like/dislike buttons */}
+            </div>
+        </Link>
     )
 }
 
