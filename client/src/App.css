@@ -62,3 +62,14 @@ h1 {
 .forum-banner:hover {
     border: 1px solid black;
 }
+
+/* Post Banners */
+.post-banner {
+    background-color: white;
+    padding: 20px;
+    margin: 30px 80px;
+}
+
+.post-banner:hover {
+    border: 1px solid black;
+}

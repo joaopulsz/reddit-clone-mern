@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 
 function App() {
 
-  const [forums, setForums] = useState([]);
+    const [forums, setForums] = useState([]);
 
     const fetchForums = async () => {
         const response = await fetch('http://localhost:4000/forums');
@@ -20,23 +20,23 @@ function App() {
         fetchForums();
     }, [])
 
-  return (
-    <>
-      <BrowserRouter>
-        <Header/>
-                    
-        <Routes>
-          <Route path="/" element={<AppContainer forums={forums}/>}/>
+    return (
+        <>
+            <BrowserRouter>
+                <Header />
 
-          {forums.map((forum, index) => {
-                return <Route key={index} path={`/${forum.title}`} element={<ForumContainer forum={forum}/>}/>         
-            })}   
-        </Routes>
+                <Routes>
+                    <Route path="/" element={<AppContainer forums={forums} />} />
 
-        <Footer/>
-      </BrowserRouter>
-    </>
-  );
+                    {forums.map((forum, index) => {
+                        return <Route key={index} path={`/${forum.title}`} element={<ForumContainer forum={forum} />} />
+                    })}
+                </Routes>
+
+                <Footer />
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;
