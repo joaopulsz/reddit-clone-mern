@@ -12,9 +12,10 @@ const PostContainer = ({post}) => {
 
     return (
         <div>
-            <p>HELLO</p>
             <Post post={post}/>
             <div className="comments-container">
+                <h3>{comments.length} Comments</h3>
+
                 {comments.map((comment, index) => {
                     return <Comment key={index} comment={comment}/>
                 })}

@@ -73,3 +73,9 @@ h1 {
 .post-banner:hover {
     border: 1px solid black;
 }
+
+/* Forum Container */
+.forum-title {
+    text-align: center;
+    font-size: 2em;
+}
