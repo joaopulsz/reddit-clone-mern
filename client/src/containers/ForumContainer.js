@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Post from '../components/Post'
+import PostBanner from '../components/PostBanner'
 
 const ForumContainer = ({forum}) => {
 
@@ -21,7 +21,7 @@ const ForumContainer = ({forum}) => {
         <div className="forum">
             <h2>{forum.title}</h2>
             {posts.map((post, index) => {
-                return <Post key={index} post={post}/>
+                return <PostBanner key={index} post={post}/>
             })}
         </div>
     )

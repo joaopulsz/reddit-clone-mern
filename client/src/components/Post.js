@@ -1,17 +1,18 @@
-import React from "react";
-
 const Post = () => {
 
     return (
-        <div className="post">
-            <h3 className="post-title">Post title</h3>
-            <p className="post-body">
-            THIS IS THE TEXT BODY OF A POST: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi libero ea ipsa! Harum non ducimus sit officia facilis! Sint maxime odit libero. Recusandae maiores saepe asperiores, consequuntur inventore unde et!
-            </p> 
-            {/* add like count and like/dislike buttons */}
-
-            {/* comments list */}
-        </div>
+        <>
+            <div className="post">
+                <h3 className="post-title">{post.title}</h3>
+                <p className="post-author">{post.user}</p>
+                <p className="post-body">{post.body}</p> 
+            </div>
+            <div className="comments-container">
+                {post.comments.map((comment, index) => {
+                    return <Comment key={index} comment={comment}/>
+                })}
+            </div>
+        </>
     )
 }
 
