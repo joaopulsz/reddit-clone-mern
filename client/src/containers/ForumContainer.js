@@ -10,15 +10,12 @@ const ForumContainer = ({forum}) => {
     const fetchPosts = async () => {
         const response = await fetch(`http://localhost:4000/forums/${id}/posts`);
         const postsData = await response.json();
-        setPosts(postsData);
+        setPosts(postsData.posts);
     }
 
     useEffect(() => {
         fetchPosts();
     }, [])
-
-    //TODO: fix fetch posts by forum.
-    console.log(posts)
 
     return (
         <div className="forum">

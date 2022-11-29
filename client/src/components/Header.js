@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -6,7 +7,7 @@ const Header = () => {
     return (
         <header>
             <nav id="navbar">
-                <h1>Fakeddit</h1>
+                <Link to='/'><h1>Fakeddit</h1></Link>
                 
                 <form>
                     <input type="text" placeholder="Search Fakeddit"></input>
