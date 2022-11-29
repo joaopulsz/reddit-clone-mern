@@ -1,3 +1,4 @@
+import React from "react";
 // displays a forum and all of its posts
 
 const ForumContainer = () => {

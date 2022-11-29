@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Header = () => {
 
     // TODO: add conditional rendering to change navbar if there is a user logged in
