@@ -18,11 +18,19 @@ const PostContainer = ({post}) => {
         getAuthor();
     }, [])
 
+
+    //TODO: handlecick func to submit comment
+
     return (
-        <div>
+        <div className="post-container">
             <Post post={post} author={author}/>
             <div className="comments-container">
                 <h3>{comments.length} Comments</h3>
+
+                <form>
+                    <textarea id="comment-box" placeholder="What are your thoughts?"/>
+                    <button id="submit-comment-btn">Comment</button>
+                </form>
 
                 {comments.map((comment, index) => {
                     return <Comment key={index} comment={comment}/>

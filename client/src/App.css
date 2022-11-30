@@ -79,3 +79,22 @@ h1 {
     text-align: center;
     font-size: 2em;
 }
+
+/* Post Container */
+.post, .comments-container {
+    background-color: white;
+    width: 85%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+#comment-box {
+    font-family: inherit;
+    width: 50%;
+    height: 100px;
+}
+
+#submit-comment-btn {
+    display: block;
+}
