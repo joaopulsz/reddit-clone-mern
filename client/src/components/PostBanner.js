@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const PostBanner = ({post, forum}) => {
+const PostBanner = ({post, setPost}) => {
 
-    const route = `/${forum.title}/${post._id}`;
+    const route = `/${post._id}`;
+
+    const handleClick = () => {
+        setPost(post);
+    }
 
     return (
-        <Link to={route}>
+        <Link to={route} onClick={handleClick}>
             <div className="post-banner">
                 <h3 className="post-title">{post.title}</h3>
                 <p className="like-count">{post.likes} likes</p>
