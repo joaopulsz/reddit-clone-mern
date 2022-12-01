@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const Forum = require('../models/Forum');
+const User = require('../models/User');
 
 const createNewPost = async (req, res) => {
     const post = new Post({
@@ -12,11 +13,14 @@ const createNewPost = async (req, res) => {
     });
 
     const forum = await Forum.findById(req.body.forum);
+    const user = await User.findById(req.body.user);
     
     try {
         const newPost = await post.save();
         forum.posts.push(post);
+        user.posts.push(post);
         await forum.save();
+        await user.save();
         res.status(201).json(newPost);
     } catch (err) {
         res.status(400).json({
