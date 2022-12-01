@@ -12,8 +12,18 @@ import Footer from './components/Footer';
 function App() {
 
     const [forums, setForums] = useState([]);
-
+    const [users, setUsers] = useState([]);
     const [post, setPost] = useState({});
+
+    const registerNewUser = async (newUser) => {
+        const response = await fetch("http://localhost:4000/register", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUser)
+        })
+        const savedUser = await response.json();
+        setUsers([...users, savedUser]);
+    }
 
     const fetchForums = async () => {
         const response = await fetch('http://localhost:4000/forums');
@@ -33,7 +43,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<AppContainer forums={forums} />} />
 
-                    <Route path="/register" element={<RegisterContainer/>} />
+                    <Route path="/register" element={<RegisterContainer registerNewUser={registerNewUser}/>} />
 
                     <Route path='/login' element={<LoginContainer/>} />
 
