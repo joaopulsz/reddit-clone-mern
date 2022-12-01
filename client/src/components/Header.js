@@ -32,6 +32,8 @@ const Header = ({ loggedInUser, setLoggedInUser }) => {
                     <input type="text" placeholder="Search Fakeddit"></input>
                     <button type="submit">Search</button>
                 </form>
+
+                <p>Logged-in as: {loggedInUser.username}</p>
                 
                 <div className="nav-links">
                     <Link to='/account'>My Account</Link>

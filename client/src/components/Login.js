@@ -8,6 +8,8 @@ const Login = ({ setLoggedInUser }) => {
         password: ""
     })
 
+    const [loginFailed, setLoginFailed] = useState(false);
+
     const login = async (user) => {
         const response = await fetch("http://localhost:4000/login",{
             method: "POST",
@@ -37,6 +39,8 @@ const Login = ({ setLoggedInUser }) => {
                     password: ""
                 })
                 navigate('/');
+            } else {
+                setLoginFailed(true);
             }
         })
     }
@@ -47,8 +51,10 @@ const Login = ({ setLoggedInUser }) => {
             <h2>Log In</h2>
 
             <form onSubmit={handleSubmit}>
+
+                {loginFailed ? <p id="failed-login-msg">Login failed, username and password do not match.</p> : null}
                 
-                <label htmlFor="username">Username or Email:</label>
+                <label htmlFor="username">Username or Email Address: </label>
                 <input type="text" id="login-username" name="username" onChange={handleChange}/>
 
                 <label htmlFor="password">Password:</label>
@@ -56,8 +62,10 @@ const Login = ({ setLoggedInUser }) => {
 
                 <input id="login-btn" type="submit" value="Log in" />
 
-                <p>Don't have an account? <Link to="/register">CLICK HERE</Link> to register!</p>
             </form>
+
+            <p>Don't have an account? <Link to="/register">CLICK HERE</Link> to register!</p>
+
         </div>
     )
 }
