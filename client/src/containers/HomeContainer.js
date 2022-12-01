@@ -1,7 +1,7 @@
 import React from "react";
 import ForumBanner from "../components/ForumBanner";
 
-const AppContainer = ({forums}) => {
+const HomeContainer = ({forums}) => {
 
     return (
         <>
@@ -12,4 +12,4 @@ const AppContainer = ({forums}) => {
     )
 }
 
-export default AppContainer;
+export default HomeContainer;

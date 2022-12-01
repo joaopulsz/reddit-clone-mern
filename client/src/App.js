@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import AppContainer from './containers/AppContainer'
+import HomeContainer from './containers/HomeContainer'
 import Registration from './components/Registration';
 import Login from './components/Login';
 import UserAccount from './components/UserAccount';
@@ -44,7 +44,7 @@ function App() {
                 <Header loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
 
                 <Routes>
-                    <Route path="/" element={<AppContainer forums={forums} />} />
+                    <Route path="/" element={<HomeContainer forums={forums} />} />
 
                     <Route path="/register" element={<Registration registerNewUser={registerNewUser} />} />
 
