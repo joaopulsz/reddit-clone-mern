@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import AppContainer from './containers/AppContainer'
+import RegisterContainer from './containers/RegisterContainer';
+import LoginContainer from './containers/LoginContainer';
 import ForumContainer from './containers/ForumContainer';
 import PostContainer from "./containers/PostContainer";
 import Footer from './components/Footer';
@@ -30,6 +32,10 @@ function App() {
 
                 <Routes>
                     <Route path="/" element={<AppContainer forums={forums} />} />
+
+                    <Route path="/register" element={<RegisterContainer/>} />
+
+                    <Route path='/login' element={<LoginContainer/>} />
 
                     {forums.map((forum, index) => {
                         return <Route key={index} path={`/${forum.title}/*`} element={<ForumContainer forum={forum} setPost={setPost} />} />

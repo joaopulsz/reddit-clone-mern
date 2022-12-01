@@ -14,10 +14,9 @@ const Header = () => {
                     <button type="submit">Search</button>
                 </form>
                 
-                {/* add routes to the links below */}
                 <div className="nav-links">
-                    <a href="#">Sign Up</a>
-                    <a href="#">Log in</a>
+                    <Link to="/register">Sign Up</Link>
+                    <Link to ="/login">Log in</Link>
                 </div>
             </nav>
         </header>
