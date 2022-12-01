@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const RegisterContainer = ({registerNewUser}) => {
+const Registration = ({registerNewUser}) => {
 
     const [newUser, setNewUser] = useState({
             username: "", 
@@ -26,7 +26,7 @@ const RegisterContainer = ({registerNewUser}) => {
             })
         }
 
-    return(
+    return (
         <div className="registration-container">
 
             
@@ -53,4 +53,4 @@ const RegisterContainer = ({registerNewUser}) => {
     )
 }
 
-export default RegisterContainer;
+export default Registration;
