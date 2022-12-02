@@ -98,3 +98,17 @@ h1 {
 #submit-comment-btn {
     display: block;
 }
+
+/* User Account Page */
+.user-account-page h2, h3 {
+    text-align: center;
+}
+
+#user-data-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#user-posts, #user-comments {
+    width: 45%;
+}
