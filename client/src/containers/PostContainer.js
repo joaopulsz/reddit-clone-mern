@@ -13,8 +13,14 @@ const PostContainer = ({post}) => {
         setAuthor(userData);
     }
 
+    const fetchComments = async () => {
+        const response = await fetch(`http://localhost:4000/posts/${post._id}/comments`);
+        const postData = await response.json();
+        setComments(postData.comments);
+    }
+
     useEffect(() => {
-        setComments(post.comments);
+        fetchComments();
         getAuthor();
     }, [])
 
@@ -25,7 +31,7 @@ const PostContainer = ({post}) => {
         <div className="post-container">
             <Post post={post} author={author}/>
             <div className="comments-container">
-                <h3>{comments.length} Comments</h3>
+                {comments.length > 1 ? <h3>{comments.length} Comments</h3> : <h3>{comments.length} Comment</h3>}
 
                 <form>
                     <textarea id="comment-box" placeholder="What are your thoughts?"/>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PostBanner from '../components/PostBanner';
 
-const ForumContainer = ({forum, setPost}) => {
+const ForumContainer = ({forum, setPost, setCurrentForum}) => {
 
     const [posts, setPosts] = useState([]);
 
@@ -23,7 +23,7 @@ const ForumContainer = ({forum, setPost}) => {
             <h2 className="forum-title">{forum.title}</h2>
 
             {posts.map((post, index) => {
-                return <PostBanner key={index} post={post} setPost={setPost} />        
+                return <PostBanner key={index} post={post} setPost={setPost} forum={forum.title} setCurrentForum={setCurrentForum} />        
             })}
                 
         </div>

@@ -67,7 +67,7 @@ h1 {
 .post-banner {
     background-color: white;
     padding: 20px;
-    margin: 30px 80px;
+    margin: 30px 30px;
 }
 
 .post-banner:hover {
@@ -97,6 +97,12 @@ h1 {
 
 #submit-comment-btn {
     display: block;
+    margin-bottom: 30px;
+}
+
+.comment {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 /* User Account Page */
@@ -111,4 +117,10 @@ h1 {
 
 #user-posts, #user-comments {
     width: 45%;
+}
+
+.user-page-comment {
+    background-color: white;
+    padding: 10px;
+    margin: 30px 30px;
 }

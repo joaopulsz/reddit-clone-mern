@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const PostBanner = ({post, setPost}) => {
+const PostBanner = ({post, setPost, forum, setCurrentForum}) => {
 
-    const route = `/${post._id}`;
+    const route = `/${forum}/${post._id}`;
 
     const handleClick = () => {
         setPost(post);
+        setCurrentForum(forum);
     }
 
     return (

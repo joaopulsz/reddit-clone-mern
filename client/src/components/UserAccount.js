@@ -23,6 +23,20 @@ const UserAccount = ({ loggedInUser }) => {
         fetchComments();
     }, [])
 
+    //TODO: fix this:
+    const postsList = posts.map(async (post, index) => {
+        const fetchForum = async () => {
+            const response = await fetch(`http://localhost:4000/forums/${post.forum}`);
+            const forumData = await response.json();
+            return forumData;
+        } 
+        const forum = await fetchForum();
+        const forumTitle = forum.title;
+        console.log(forumTitle)
+
+        return <PostBanner key={index} post={post} forum={forumTitle} />
+    })
+
     return (
         <div className="user-account-page">
             <h2>{loggedInUser.username}</h2>
@@ -31,13 +45,18 @@ const UserAccount = ({ loggedInUser }) => {
                 <div id="user-posts">
                     <h3>Posts</h3>
 
-                    {posts.map((post, index) => {
-                    return <PostBanner key={index} post={post} />})}
+                    {postsList}
                 </div>
 
                 <div id="user-comments">
                     <h3>Comments</h3>
-
+                    
+                    {comments.map((comment, index) => {
+                        return <div key={index} className="user-page-comment">
+                            <p>{comment.body}</p>
+                            <p>{comment.likes} likes</p>
+                        </div>
+                    })}
                 </div>
             </div>
         </div>
