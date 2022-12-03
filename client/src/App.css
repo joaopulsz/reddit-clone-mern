@@ -119,7 +119,7 @@ h1 {
     width: 45%;
 }
 
-.user-page-comment {
+.user-page-comment, .user-page-post {
     background-color: white;
     padding: 10px;
     margin: 30px 30px;

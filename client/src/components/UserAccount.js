@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import PostBanner from './PostBanner';
 
-const UserAccount = ({ loggedInUser }) => {
+const UserAccount = ({ loggedInUser, forums }) => {
 
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
@@ -23,20 +22,6 @@ const UserAccount = ({ loggedInUser }) => {
         fetchComments();
     }, [])
 
-    //TODO: fix this:
-    const postsList = posts.map(async (post, index) => {
-        const fetchForum = async () => {
-            const response = await fetch(`http://localhost:4000/forums/${post.forum}`);
-            const forumData = await response.json();
-            return forumData;
-        } 
-        const forum = await fetchForum();
-        const forumTitle = forum.title;
-        console.log(forumTitle)
-
-        return <PostBanner key={index} post={post} forum={forumTitle} />
-    })
-
     return (
         <div className="user-account-page">
             <h2>{loggedInUser.username}</h2>
@@ -45,14 +30,33 @@ const UserAccount = ({ loggedInUser }) => {
                 <div id="user-posts">
                     <h3>Posts</h3>
 
-                    {postsList}
+                    {posts.map((post, index) => {
+                        let forumTitle;
+                        for (let forum of forums) {
+                            if (post.forum === forum._id) {
+                                forumTitle = forum.title;
+                            }
+                        }
+                        return <div className="user-page-post" key={index}>
+                            <h4>{forumTitle}</h4>
+                            <h5>{post.title}</h5>
+                            <p>{post.likes} likes</p>
+                        </div>})}
                 </div>
 
                 <div id="user-comments">
                     <h3>Comments</h3>
                     
                     {comments.map((comment, index) => {
+                        let postTitle;
+                        for (let post of posts) {
+                            if (post._id === comment.post) {
+                                postTitle = post.title;
+                            }
+                        }
+
                         return <div key={index} className="user-page-comment">
+                            <h5>{postTitle}</h5>
                             <p>{comment.body}</p>
                             <p>{comment.likes} likes</p>
                         </div>
