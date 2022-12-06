@@ -5,6 +5,7 @@ const ForumContainer = ({forum, setPost, loggedInUser}) => {
 
     const [posts, setPosts] = useState([]);
     const [showNewPostForm, setShowNewPostForm] = useState(false);
+    const [showPostCreatedMessage, setShowPostCreatedMessage] = useState(false);
 
     const [newPost, setNewPost] = useState({
         forum: forum._id,
@@ -51,6 +52,8 @@ const ForumContainer = ({forum, setPost, loggedInUser}) => {
             title: "",
             body: ""
         });
+        setShowNewPostForm(false);
+        setShowPostCreatedMessage(true);
     }
 
     useEffect(() => {
@@ -77,6 +80,8 @@ const ForumContainer = ({forum, setPost, loggedInUser}) => {
                     <button type="submit">Submit</button>
                 </form>
             </div> : null}
+
+            {showPostCreatedMessage ? <p id="post-created-msg">Post created successfully!</p> : null}
 
             {posts.map((post, index) => {
                 return <PostBanner key={index} post={post} setPost={setPost} forum={forum.title} />        
