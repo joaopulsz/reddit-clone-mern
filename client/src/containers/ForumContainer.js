@@ -6,6 +6,13 @@ const ForumContainer = ({forum, setPost, loggedInUser}) => {
     const [posts, setPosts] = useState([]);
     const [showNewPostForm, setShowNewPostForm] = useState(false);
 
+    const [newPost, setNewPost] = useState({
+        forum: forum._id,
+        user: loggedInUser._id,
+        title: "",
+        body: ""
+    });
+
     const id = forum._id;
 
     const fetchPosts = async () => {
@@ -14,8 +21,36 @@ const ForumContainer = ({forum, setPost, loggedInUser}) => {
         setPosts(postsData.posts);
     }
 
+    const createPost = async (post) => {
+        const response = await fetch("http://localhost:4000/posts", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(post)
+        });
+        const createdPost = await response.json();
+        setPosts([...posts, createdPost]);
+    }
+
     const handleClick = () => {
         setShowNewPostForm(true);
+    }
+
+    const handleChange = event => {
+        const name = event.target.name;
+        const updatedPost = {...newPost}
+        updatedPost[name] = event.target.value;
+        setNewPost(updatedPost);          
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        createPost(newPost);
+        setNewPost({
+            forum: forum._id,
+            user: loggedInUser._id,
+            title: "",
+            body: ""
+        });
     }
 
     useEffect(() => {
@@ -30,8 +65,16 @@ const ForumContainer = ({forum, setPost, loggedInUser}) => {
             {loggedInUser._id ? <button id="new-post-btn" onClick={handleClick} >Write New Post</button> : null}
 
             {showNewPostForm ? <div>
-                <form>
-                    
+                <form id="new-post-form" onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="title">Title: </label>
+                        <input name="title" onChange={handleChange}></input>
+                    </div>
+                    <div>
+                        <label htmlFor="body">Body: </label>
+                        <textarea name="body" onChange={handleChange}></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
                 </form>
             </div> : null}
 

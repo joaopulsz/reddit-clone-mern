@@ -101,6 +101,26 @@ h1 {
     cursor: pointer;
 }
 
+#new-post-form {
+    margin: auto;
+    width: 600px; 
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+#new-post-form button {
+    width: 15rem;
+    justify-self: center;
+    padding: 10px;
+}
+
+#new-post-form input, textarea {
+    margin: 10px;
+    width: 30rem;
+    padding: 12px;
+    resize: vertical;
+}
+
 /* Post Container */
 .post, .comments-container {
     background-color: white;

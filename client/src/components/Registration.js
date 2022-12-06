@@ -5,7 +5,7 @@ const Registration = ({registerNewUser}) => {
     const [newUser, setNewUser] = useState({
             username: "", 
             email: "",
-            password:"",
+            password:""
         });
 
         const handleChange = event => {
