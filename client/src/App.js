@@ -53,7 +53,7 @@ function App() {
                     <Route path='/account' element={<UserAccount loggedInUser={loggedInUser} forums={forums}/>} /> 
 
                     {forums.map((forum, index) => {
-                        return <Route key={index} path={`/${forum.title}`} element={<ForumContainer forum={forum} setPost={setPost} />} />
+                        return <Route key={index} path={`/${forum.title}/*`} element={<ForumContainer forum={forum} setPost={setPost} loggedInUser={loggedInUser} />} />
                     })}
 
                     {post._id ? <Route path={`/${post._id}`} element={<PostContainer post={post}/>}/> : null}   
