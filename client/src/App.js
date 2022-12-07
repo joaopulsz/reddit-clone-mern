@@ -56,7 +56,7 @@ function App() {
                         return <Route key={index} path={`/${forum.title}/*`} element={<ForumContainer forum={forum} setPost={setPost} loggedInUser={loggedInUser} />} />
                     })}
 
-                    {post._id ? <Route path={`/${post._id}`} element={<PostContainer post={post}/>}/> : null}   
+                    {post._id ? <Route path={`/${post._id}`} element={<PostContainer post={post} loggedInUser={loggedInUser}/>}/> : null}   
                 </Routes>
 
                 <Footer />
