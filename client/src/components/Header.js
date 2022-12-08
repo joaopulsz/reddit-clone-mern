@@ -1,7 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Header = ({ loggedInUser, setLoggedInUser }) => {
+const Header = ({ loggedInUser, setLoggedInUser, setSearchResultsArray }) => {
+
+    const [query, setQuery] = useState("");
+
+    const navigate = useNavigate();
+
+    const fetchPosts = async (query) => {
+        const response = await fetch(`http://localhost:4000/posts/search/?q=${query}`);
+        const searchResults = await response.json();
+        setSearchResultsArray(searchResults);
+    }
+
+    const handleSubmit = async event => { 
+        event.preventDefault();
+        await fetchPosts(query);
+        navigate('/search');
+    }
+
+    const handleChange = event => {
+        setQuery(event.target.value);
+    }
 
     const handleClick = () => {
         setLoggedInUser({});
@@ -12,8 +32,8 @@ const Header = ({ loggedInUser, setLoggedInUser }) => {
             <nav id="navbar">
                 <Link to='/'><h1>Fakeddit</h1></Link>
                 
-                <form>
-                    <input type="text" placeholder="Search Fakeddit"></input>
+                <form onSubmit={handleSubmit}>
+                    <input name="search" type="text" placeholder="Search Fakeddit" onChange={handleChange}/>
                     <button type="submit">Search</button>
                 </form>
                 

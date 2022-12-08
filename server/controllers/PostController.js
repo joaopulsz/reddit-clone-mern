@@ -2,6 +2,19 @@ const Post = require('../models/Post');
 const Forum = require('../models/Forum');
 const User = require('../models/User');
 
+const getPostsByQuery = async (req, res) => {
+    let query = req.query.q;
+    //TODO: fix this
+    try {
+        const posts = await Post.find().populate('forum');
+        res.json(posts);
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
+}
+
 const createNewPost = async (req, res) => {
     const post = new Post({
         forum: req.body.forum,
@@ -54,4 +67,4 @@ const deletePostById = async (req, res) => {
     }
 }
 
-module.exports = {createNewPost, getCommentsByPost, deletePostById}
+module.exports = {getPostsByQuery, createNewPost, getCommentsByPost, deletePostById}

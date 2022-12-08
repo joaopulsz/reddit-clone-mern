@@ -8,6 +8,7 @@ import Login from './components/Login';
 import UserAccount from './components/UserAccount';
 import ForumContainer from './containers/ForumContainer';
 import PostContainer from "./containers/PostContainer";
+import SearchResultsContainer from "./containers/SearchResultsContainer";
 import Footer from './components/Footer';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     const [users, setUsers] = useState([]);
     const [loggedInUser, setLoggedInUser] = useState({});
     const [post, setPost] = useState({});
+    const [searchResultsArray, setSearchResultsArray] = useState([]);
 
     const registerNewUser = async (newUser) => {
         const response = await fetch("http://localhost:4000/register", {
@@ -41,7 +43,7 @@ function App() {
     return (
         <>
             <BrowserRouter>
-                <Header loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+                <Header loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setSearchResultsArray={setSearchResultsArray}/>
 
                 <Routes>
                     <Route path="/" element={<HomeContainer forums={forums} />} />
@@ -50,7 +52,9 @@ function App() {
 
                     <Route path='/login' element={<Login setLoggedInUser={setLoggedInUser}/>} />
 
-                    <Route path='/account' element={<UserAccount loggedInUser={loggedInUser} forums={forums}/>} /> 
+                    <Route path='/account' element={<UserAccount loggedInUser={loggedInUser} forums={forums}/>} />
+
+                    <Route path='/search' element={<SearchResultsContainer searchResultsArray={searchResultsArray} setPost={setPost}/> } />
 
                     {forums.map((forum, index) => {
                         return <Route key={index} path={`/${forum.title}/*`} element={<ForumContainer forum={forum} setPost={setPost} loggedInUser={loggedInUser} />} />
