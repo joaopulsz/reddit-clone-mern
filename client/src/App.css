@@ -2,6 +2,10 @@ body {
     background-color: rgb(200, 210, 230);
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Header */
 header {
     position: sticky;
@@ -16,7 +20,7 @@ header {
 }
 
 h1 {
-
+    color: orangered;
 }
 
 #navbar form {
@@ -39,7 +43,6 @@ h1 {
 
 .nav-links a {
     font-weight: 500;
-    text-decoration: none;
     color: rgb(0, 110, 255);
     padding: 5px;
     margin: 5px;
@@ -88,6 +91,7 @@ h1 {
 
 /* Forum Banners */
 .forum-banner {
+    color: black;
     background-color: white;
     padding: 20px;
     margin: 30px 80px;
@@ -100,6 +104,7 @@ h1 {
 /* Post Banners */
 .post-banner {
     background-color: white;
+    color: black;
     padding: 20px;
     margin: 30px 30px;
 }
