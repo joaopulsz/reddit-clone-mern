@@ -52,8 +52,8 @@ h1 {
     background-color: rgb(0, 110, 255);
 }
 
-/* Registration */
-.registration-container {
+/* Registration & Login */
+.registration-container, .login {
     margin: auto;
     margin-top: 5rem;
     text-align: center;
@@ -62,7 +62,7 @@ h1 {
     height: 30rem;
 }
 
-.registration-container form {
+.registration-container form, .login form {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -70,9 +70,20 @@ h1 {
     align-items: center;
 }
 
-.registration-container form input, label {
+.registration-container input, .registration-container label {
     display: block;
     margin: .5rem;
+}
+
+.login input, .login label {
+    display: block;
+    margin: .5rem;
+}
+
+#username-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Forum Banners */

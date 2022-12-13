@@ -48,23 +48,29 @@ const Login = ({ setLoggedInUser }) => {
     return (
         <div className="login">
 
-            <h2>Log In</h2>
 
             <form onSubmit={handleSubmit}>
 
+                <h2>Log In</h2>
+
                 {loginFailed ? <p id="failed-login-msg">Login failed, username and password do not match.</p> : null}
                 
-                <label htmlFor="username">Username or Email Address: </label>
-                <input type="text" id="login-username" name="username" onChange={handleChange}/>
+                <div id="username-field">
+                    <label htmlFor="username">Username or Email Address: </label>
+                    <input type="text" id="login-username" name="username" onChange={handleChange}/>
+                </div>
 
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="login-password" name="password" onChange={handleChange}/>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="login-password" name="password" onChange={handleChange}/>
+                </div>
 
                 <input id="login-btn" type="submit" value="Log in" />
 
+                <p>Don't have an account? <Link to="/register">CLICK HERE</Link> to register!</p>
+
             </form>
 
-            <p>Don't have an account? <Link to="/register">CLICK HERE</Link> to register!</p>
 
         </div>
     )
