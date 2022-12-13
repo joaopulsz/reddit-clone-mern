@@ -63,7 +63,7 @@ const PostContainer = ({post, loggedInUser}) => {
         <div className="post-container">
             <Post post={post} author={author}/>
             <div className="comments-container">
-                {comments.length > 1 ? <h3>{comments.length} Comments</h3> : <h3>{comments.length} Comment</h3>}
+                {comments.length !== 1 ? <h3>{comments.length} Comments</h3> : <h3>{comments.length} Comment</h3>}
 
                 {loggedInUser.username && !showCommentSubmittedMessage ? <form onSubmit={handleSubmit}>
                     <textarea name="body" id="comment-box" placeholder="What are your thoughts?" onChange={handleChange}/>
