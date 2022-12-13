@@ -33,17 +33,23 @@ const Registration = ({registerNewUser}) => {
             <form onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
 
-                <label htmlFor="username">Username:</label>
-                <input id="username" type="text" name="username" 
-                placeholder="Username" value={newUser.username} required onChange={handleChange}/>
+                <div>
+                    <label htmlFor="username">Username: </label>
+                    <input id="username" type="text" name="username" 
+                    value={newUser.username} required onChange={handleChange}/>
+                </div>
 
-                <label htmlFor="email">Email:</label>
-                <input id="email" type="email" name="email" 
-                placeholder="Email address" value={newUser.email} required onChange={handleChange}/>
+                <div>
+                    <label htmlFor="email">Email: </label>
+                    <input id="email" type="email" name="email" 
+                    placeholder="xyz@example.com" value={newUser.email} required onChange={handleChange}/>
+                </div>
 
-                <label htmlFor="password">Password (minimum 8 characters): </label>
-                <input id="password" type="password" name="password" 
-                placeholder="Password" value={newUser.password} minLength="8" required onChange={handleChange}/>
+                <div>
+                    <label htmlFor="password">Password: </label>
+                    <input id="password" type="password" name="password" 
+                    placeholder="minimum 8 characters" value={newUser.password} minLength="8" required onChange={handleChange}/>
+                </div>
 
                 <input id="register-btn" type="submit" value="Create Account" />
 
