@@ -4,9 +4,11 @@ const User = require('../models/User');
 
 const getPostsByQuery = async (req, res) => {
     let query = req.query.q;
-    //TODO: fix this
     try {
-        const posts = await Post.find().populate('forum');
+        const posts = await Post.find({'title': {
+            "$regex": query,
+            "$options": "i"
+          }}).populate('forum');
         res.json(posts);
     } catch (err) {
         res.status(500).json({
