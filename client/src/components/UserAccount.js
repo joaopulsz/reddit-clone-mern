@@ -40,7 +40,7 @@ const UserAccount = ({ loggedInUser, forums }) => {
                         return <div className="user-page-post" key={index}>
                             <h4>{forumTitle}</h4>
                             <h5>{post.title}</h5>
-                            <p>{post.likes} likes</p>
+                            {/* <p>{post.likes} likes</p> */}
                         </div>})}
                 </div>
 
@@ -58,7 +58,7 @@ const UserAccount = ({ loggedInUser, forums }) => {
                         return <div key={index} className="user-page-comment">
                             <h5>{postTitle}</h5>
                             <p>{comment.body}</p>
-                            <p>{comment.likes} likes</p>
+                            {/* <p>{comment.likes} likes</p> */}
                         </div>
                     })}
                 </div>

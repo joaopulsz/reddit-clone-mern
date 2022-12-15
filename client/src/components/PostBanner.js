@@ -13,7 +13,7 @@ const PostBanner = ({post, setPost, forum}) => {
         <Link to={route} onClick={handleClick}>
             <div className="post-banner">
                 <h3 className="post-title">{post.title}</h3>
-                <p className="like-count">{post.likes} likes</p>
+                {/* <p className="like-count">{post.likes} likes</p> */}
                 {/* add like/dislike buttons */}
             </div>
         </Link>

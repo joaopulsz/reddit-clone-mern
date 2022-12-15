@@ -185,6 +185,10 @@ h1 {
     border-bottom: 1px solid black;
 }
 
+.post-author, .comment-author {
+    font-size: 0.8rem;
+}
+
 /* User Account Page */
 .user-account-page h2, h3 {
     text-align: center;

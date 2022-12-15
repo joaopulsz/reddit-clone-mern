@@ -18,7 +18,7 @@ const Comment = ({comment}) => {
         <div className="comment">
             <p className="comment-author">{author.username}</p>
             <p className="comment-body">{comment.body}</p>
-            <p>{comment.likes} likes</p>
+            {/* <p>{comment.likes} likes</p> */}
             {/* add like/dislike buttons */}
         </div>
     )
